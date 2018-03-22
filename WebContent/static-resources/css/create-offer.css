@@ -1,0 +1,101 @@
+@charset "ISO-8859-1";
+.offertable {
+	width: 400px;
+	padding: 10px;
+	border: 1px solid blue;
+}
+
+input[type=text] {
+	width: 250px;
+}
+
+input[type=password] {
+	width: 250px;
+}
+
+textarea {
+	width: 250px;
+	height: 200px;
+}
+
+.label {
+	text-align: right;
+	vertical-align: top;
+}
+
+.control {
+	margin-left: 10px;
+}
+
+.error {
+	color: red;
+	font-size: small;
+	margin-left: 10px;
+}
+
+.valid {
+	color: green;
+	font-size: small;
+	margin-left: 10px;
+}
+
+table.offerDisplayTable, td.offerDisplayTd {
+	border: 1px solid black;
+}
+
+th.offerDisplayTh {
+ 	border: 1px solid black;
+ 	color: green;
+}
+
+td.offerDisplayTd {
+ 	border: 1px solid black;
+ 	color: blue;
+}
+
+.homeDiv {
+	height: 25px;
+	background-color: powderblue;
+}
+
+.homeP {
+	text-align: center;
+	color: aqua;
+	padding-top: 4px;
+}
+
+div.header {
+	text-align: center;
+	width: 100%;
+	height: 40px;
+	background-color: #42aaf4;
+}
+
+div.content {
+	position: relative;
+	padding: 30px;
+}
+
+div.footer {
+	position: relative;
+	text-indent: 100px;
+	text-align: center;
+	color: gray;
+	font-size: small;
+}
+
+a.title {
+	color: white;
+	font-size: 33px;
+}
+
+a.login {
+	position: absolute;
+	top: 15px;
+	right: 20px;
+}
+
+input.delete {
+	border: 1px solid red;
+}
+

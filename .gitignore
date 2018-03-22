@@ -1,0 +1,13 @@
+
+.settings/.jsdtscope
+*.prefs
+*.component
+.settings/org.eclipse.wst.common.project.facet.core.xml
+*.container
+*.name
+.project
+.classpath
+*.class
+target/*
+.springBeans
+.springWebflow
