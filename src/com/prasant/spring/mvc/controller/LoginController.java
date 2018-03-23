@@ -1,6 +1,10 @@
 package com.prasant.spring.mvc.controller;
 
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -10,7 +14,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.prasant.spring.mvc.model.Message;
 import com.prasant.spring.mvc.model.User;
 import com.prasant.spring.mvc.service.UserService;
 import com.prasant.spring.mvc.validationgroup.PersistenceValidationGroup;
@@ -63,6 +69,22 @@ public class LoginController {
 		List<User> users = userService.getUsers();
 		model.addAttribute("users", users);
 		return "admin";
+	}
+	
+	@RequestMapping(value="/getmessages", method=RequestMethod.GET, produces="application/json")
+	@ResponseBody
+	public Map<String, Object> getMessages(Principal principal) {
+		List<Message> messages = null;
+		if (principal == null) {
+			messages = new ArrayList<>();
+		} else {
+			String username = principal.getName();
+			messages = userService.getMessages(username);
+		}
+		Map<String, Object> outputData = new HashMap<>();
+		outputData.put("messages", messages);
+		outputData.put("numberOfMessages", messages.size());
+		return outputData;
 	}
 
 }

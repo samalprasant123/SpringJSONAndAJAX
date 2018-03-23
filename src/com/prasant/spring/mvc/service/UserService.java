@@ -41,4 +41,8 @@ public class UserService {
 		return userDao.getUser(username);
 	}
 
+	public List<Message> getMessages(String username) {
+		return messagesDAO.getMessages(username);
+	}
+
 }
