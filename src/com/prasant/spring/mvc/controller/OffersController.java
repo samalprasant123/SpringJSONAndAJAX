@@ -1,7 +1,6 @@
 package com.prasant.spring.mvc.controller;
 
 import java.security.Principal;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.prasant.spring.mvc.model.Offer;
 import com.prasant.spring.mvc.service.OfferService;
-import com.prasant.spring.mvc.service.UserService;
 import com.prasant.spring.mvc.validationgroup.FormValidationGroup;
 
 @Controller
@@ -22,16 +20,6 @@ public class OffersController {
 	
 	@Autowired
 	private OfferService offerService;
-	
-	@Autowired
-	private UserService userService;
-	
-	@RequestMapping("/offers")
-	public String showOffers(Model model) {
-		List<Offer> offers = offerService.getOffers();
-		model.addAttribute("offers", offers);
-		return "offers";
-	}
 	
 	@RequestMapping("/createoffer")
 	public String createOffer(Model model, Principal principal) {

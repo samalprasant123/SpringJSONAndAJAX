@@ -28,7 +28,6 @@
 		<security:intercept-url pattern="/newaccount" access="permitAll" />
 		<security:intercept-url pattern="/createaccount" access="permitAll" />
 		<security:intercept-url pattern="/accountcreated" access="permitAll" />
-		<security:intercept-url pattern="/offers" access="permitAll" />
 		<security:intercept-url pattern="/logout" access="permitAll" />
 		<security:intercept-url pattern="/message" access="permitAll" />
 		<security:intercept-url pattern="/**" access="denyAll" />

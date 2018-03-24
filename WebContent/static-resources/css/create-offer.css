@@ -99,3 +99,9 @@ input.delete {
 	border: 1px solid red;
 }
 
+div.toolbar {
+	position: relative;
+	top: 10px;
+	padding-left: 30px;
+}
+
