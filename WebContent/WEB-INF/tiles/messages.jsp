@@ -19,7 +19,7 @@
 	}
 	
 	function stopTimer() {
-		window.clearInterval();
+		window.clearInterval(timer);
 	}
 	
 	function getData() {
@@ -81,6 +81,7 @@
 	}
 	
 	function showReply(i) {
+		stopTimer();
 		$("#form" + i).toggle();
 	}
 	
