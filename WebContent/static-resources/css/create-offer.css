@@ -101,7 +101,7 @@ input.delete {
 
 div.toolbar {
 	position: relative;
-	top: 10px;
+	padding-top: 10px;
 	padding-left: 30px;
 }
 
@@ -125,5 +125,25 @@ span.messageContent {
 span.messageName {
 	color: brown;
 	font-size: medium;
+}
+
+form.replyform {
+	padding: 20px;
+	display: none;
+}
+
+textarea.replyarea {
+	width: 400px;
+	height: 100px;
+}
+
+input.replybutton {
+	display: block;
+	font-size: medium;
+	border: 1px solid gray;
+}
+
+a.replylink {
+	color: brown;
 }
 
