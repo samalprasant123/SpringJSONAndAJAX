@@ -8,7 +8,7 @@
 
 	$(document).ready(onLoad);
 	
-	function onLoad() {
+	function onLoad() {		
 		getData();
 		window.setInterval(getData, 10000);
 	}
@@ -27,8 +27,6 @@
 		$("#numberMessages").text(data.numberOfMessages);
 	}
 	
-	
-
 </script>
 	
 <h2 align="center">Current Offers</h2>

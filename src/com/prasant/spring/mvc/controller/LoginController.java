@@ -86,5 +86,15 @@ public class LoginController {
 		outputData.put("numberOfMessages", messages.size());
 		return outputData;
 	}
+	
+	@RequestMapping("/messages")
+	public String showMessages() {
+		return "messages";
+	}
+	
+	@RequestMapping("/denied")
+	public String showDenied() {
+		return "accessDenied";
+	}
 
 }

@@ -82,4 +82,9 @@
 		<put-attribute name="body" value="/WEB-INF/tiles/messagesent.jsp"></put-attribute>
 	</definition>
 	
+	<definition name="messages" extends="offers.base">
+		<put-attribute name="title" value="Messages"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/tiles/messages.jsp"></put-attribute>
+	</definition>
+	
 </tiles-definitions>

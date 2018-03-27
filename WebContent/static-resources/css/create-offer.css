@@ -105,3 +105,25 @@ div.toolbar {
 	padding-left: 30px;
 }
 
+.message {
+	margin-bottom: 20px;
+	border-bottom: 1px dashed black;
+}
+
+span.subject {
+	font-size: large;
+	color: brown;
+	font-weight: bold;
+}
+
+span.messageContent {
+	display: block;
+	font-size: medium;
+	font-style: italic;
+}
+
+span.messageName {
+	color: brown;
+	font-size: medium;
+}
+
