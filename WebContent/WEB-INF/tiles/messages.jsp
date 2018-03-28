@@ -66,11 +66,11 @@
 			replyButton.setAttribute("class", "replybutton");
 			replyButton.setAttribute("type", "button");
 			replyButton.setAttribute("value", "Reply");
-			replyButton.onclick = function(j) {
+			replyButton.onclick = function(j, name, email) {
 				return function() {
-					sendMessage(j);
+					sendMessage(j, name, email);
 				}
-			}(i);
+			}(i, message.name, message.email);
 				
 			
 			var replyForm = document.createElement("form");
@@ -92,11 +92,33 @@
 		$("#form" + i).toggle();
 	}
 	
-	function sendMessage(i) {
-		alert($("#textbox" + i).val());
+	function sendMessage(i, name, email) {
+		//alert($("#textbox" + i).val() + " : " + name + " : " + email);
+		$.ajax({
+			"type": 'POST',
+			"url": '<c:url value="/sendmessage" />',
+			"data": JSON.stringify({"text": $("#textbox" + i).val(), "name": name, "email": email}),
+			"success": success,
+			"error": error,
+			contentType: "application/json",
+			dataType: "json",
+			headers: {'X-CSRF-Token': $('meta[name="_csrf"]').attr('content')}
+		});
+	}
+	
+	function success(data) {
+		alert("Success");
+	}
+	
+	function error(data) {
+		alert("failure");
 	}
 	
 </script>
+
+	<meta name="_csrf" content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <%-- <meta name="_csrf_header" content="${_csrf.headerName}"/> --%>
 
 <h2 align="center">Messages</h2>
 <div id="messages">
