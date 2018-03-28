@@ -15,7 +15,7 @@
 	}
 	
 	function startTimer() {
-		timer = window.setInterval(getData, 5000);
+		timer = window.setInterval(getData, 10000);
 	}
 	
 	function stopTimer() {
@@ -60,11 +60,18 @@
 
 			var replyArea = document.createElement("textarea");
 			replyArea.setAttribute("class", "replyarea");
+			replyArea.setAttribute("id", "textbox" + i);
 			
 			var replyButton = document.createElement("input");
 			replyButton.setAttribute("class", "replybutton");
 			replyButton.setAttribute("type", "button");
 			replyButton.setAttribute("value", "Reply");
+			replyButton.onclick = function(j) {
+				return function() {
+					sendMessage(j);
+				}
+			}(i);
+				
 			
 			var replyForm = document.createElement("form");
 			replyForm.setAttribute("class", "replyform");
@@ -83,6 +90,10 @@
 	function showReply(i) {
 		stopTimer();
 		$("#form" + i).toggle();
+	}
+	
+	function sendMessage(i) {
+		alert($("#textbox" + i).val());
 	}
 	
 </script>
