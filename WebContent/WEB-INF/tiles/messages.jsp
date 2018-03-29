@@ -15,7 +15,7 @@
 	}
 	
 	function startTimer() {
-		timer = window.setInterval(getData, 10000);
+		timer = window.setInterval(getData, 5000);
 	}
 	
 	function stopTimer() {
@@ -71,7 +71,11 @@
 					sendMessage(j, name, email);
 				}
 			}(i, message.name, message.email);
-				
+			
+			var alertSpan = document.createElement("span");
+			alertSpan.setAttribute("class", "alert");
+			alertSpan.setAttribute("id", "alert" + i);
+			//alertSpan.appendChild(document.createTextNode("Message sent"));
 			
 			var replyForm = document.createElement("form");
 			replyForm.setAttribute("class", "replyform");
@@ -82,6 +86,7 @@
 			messageDiv.appendChild(subjectSpan);
 			messageDiv.appendChild(contentSpan);
 			messageDiv.appendChild(nameSpan);
+			messageDiv.appendChild(alertSpan);
 			messageDiv.appendChild(replyForm);
 			$("#messages").append(messageDiv);
 		}
@@ -97,7 +102,7 @@
 		$.ajax({
 			"type": 'POST',
 			"url": '<c:url value="/sendmessage" />',
-			"data": JSON.stringify({"text": $("#textbox" + i).val(), "name": name, "email": email}),
+			"data": JSON.stringify({"messageId":i, "text": $("#textbox" + i).val(), "name": name, "email": email}),
 			"success": success,
 			"error": error,
 			contentType: "application/json",
@@ -107,7 +112,9 @@
 	}
 	
 	function success(data) {
-		alert("Success");
+		$("#form" + data.messageId).toggle();
+		$("#alert" + data.messageId).text("Message sent.");		
+		startTimer();
 	}
 	
 	function error(data) {

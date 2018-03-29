@@ -147,3 +147,9 @@ a.replylink {
 	color: brown;
 }
 
+span.alert {
+	display: block;
+	font-weight: bold;
+	color: green;
+}
+

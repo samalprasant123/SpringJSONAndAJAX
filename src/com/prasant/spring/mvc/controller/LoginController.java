@@ -104,8 +104,9 @@ public class LoginController {
 		String text = (String) data.get("text");
 		String name = (String) data.get("name");
 		String email = (String) data.get("email");
-		System.out.println("Text: " + text + ", Name: " + name + ", Email: " + email);
+		System.out.println("messageId:" + data.get("messageId") + ", Text: " + text + ", Name: " + name + ", Email: " + email);
 		Map<String, Object> op = new HashMap<>();
+		op.put("messageId", data.get("messageId"));
 		op.put("Success", true);
 		return op;
 	}
