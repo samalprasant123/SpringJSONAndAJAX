@@ -66,11 +66,11 @@
 			replyButton.setAttribute("class", "replybutton");
 			replyButton.setAttribute("type", "button");
 			replyButton.setAttribute("value", "Reply");
-			replyButton.onclick = function(j, name, email) {
+			replyButton.onclick = function(j, name, email, subject) {
 				return function() {
-					sendMessage(j, name, email);
+					sendMessage(j, name, email, subject);
 				}
-			}(i, message.name, message.email);
+			}(i, message.name, message.email, message.subject);
 			
 			var alertSpan = document.createElement("span");
 			alertSpan.setAttribute("class", "alert");
@@ -97,12 +97,12 @@
 		$("#form" + i).toggle();
 	}
 	
-	function sendMessage(i, name, email) {
+	function sendMessage(i, name, email, subject) {
 		//alert($("#textbox" + i).val() + " : " + name + " : " + email);
 		$.ajax({
 			"type": 'POST',
 			"url": '<c:url value="/sendmessage" />',
-			"data": JSON.stringify({"messageId":i, "text": $("#textbox" + i).val(), "name": name, "email": email}),
+			"data": JSON.stringify({"messageId":i, "text": $("#textbox" + i).val(), "name": name, "email": email, "subject": subject}),
 			"success": success,
 			"error": error,
 			contentType: "application/json",

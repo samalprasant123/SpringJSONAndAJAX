@@ -8,6 +8,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +29,9 @@ public class LoginController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private MailSender mailSender;
 	
 	@RequestMapping("/login")
 	public String showLogin() {
@@ -104,7 +109,20 @@ public class LoginController {
 		String text = (String) data.get("text");
 		String name = (String) data.get("name");
 		String email = (String) data.get("email");
-		System.out.println("messageId:" + data.get("messageId") + ", Text: " + text + ", Name: " + name + ", Email: " + email);
+		String subject = (String) data.get("subject");
+		//System.out.println("messageId:" + data.get("messageId") + ", Text: " + text + ", Name: " + name + ", Email: " + email + ", Subject: " + subject);
+		
+		SimpleMailMessage mailMessage = new SimpleMailMessage();
+		//mailMessage.setFrom("springtest644@gmail.com");
+		mailMessage.setTo(email);
+		mailMessage.setSubject("Re: " + subject);
+		mailMessage.setText(text);
+		try {
+			mailSender.send(mailMessage);
+		} catch (Exception e) {
+			System.out.println("Failed to send email " + e.getMessage());
+		}
+		
 		Map<String, Object> op = new HashMap<>();
 		op.put("messageId", data.get("messageId"));
 		op.put("Success", true);

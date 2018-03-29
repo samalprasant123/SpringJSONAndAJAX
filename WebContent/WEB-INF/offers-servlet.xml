@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:webflow-config="http://www.springframework.org/schema/webflow-config"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.4.xsd
@@ -52,12 +51,12 @@
 		<property name="flowRegistry" ref="flowRegistry"></property>
 		<property name="order" value="0"></property>
 	</bean>
-	
+
 	<webflow-config:flow-builder-services
 		id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator" />
 
-	<!-- <webflow-config:flow-builder-services
-		id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator" validator="messageValidator"/> -->
+	<!-- <webflow-config:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator" 
+		validator="messageValidator"/> -->
 
 	<bean id="mvcViewFactoryCreator"
 		class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
@@ -66,5 +65,6 @@
 
 	<bean id="messageValidator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-	</bean>
+	</bean>	
+	
 </beans>

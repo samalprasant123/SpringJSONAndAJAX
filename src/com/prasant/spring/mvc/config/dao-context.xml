@@ -17,6 +17,20 @@
 
 	<context:annotation-config></context:annotation-config>
 	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"></property>
+		<property name="port" value="587"></property>
+		<property name="username" value="springtest644@gmail.com"></property>
+		<property name="password" value="SpringTest@123"></property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+			</props>
+		</property>
+	</bean>
+	
 
 	<beans profile="prod">
 		<jee:jndi-lookup jndi-name="jdbc/OffersDB" id="dataSource"
